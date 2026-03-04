@@ -32,4 +32,33 @@ These examples are provided to illustrate software development practices and do 
 
 ## Purpose
 
+
 These examples illustrate general coding practices and database design patterns used in environmental data management systems. Full project implementations are typically maintained in private repositories due to client confidentiality.
+
+## Example Data Processing Pipeline
+
+This repository demonstrates a simplified environmental monitoring data workflow implemented using R and SQL.
+
+Raw Monitoring Data (CSV)
+        ↓
+R Data Ingestion Script
+        ↓
+Automated QC Validation
+        ↓
+Relational Database Schema (SQL)
+        ↓
+Summary Statistics Generation
+        ↓
+Reporting / Analysis Outputs
+
+## Quick Run Example
+
+1. Clone the repository  
+   `git clone https://github.com/<your-org>/water-quality-data-pipeline-r`
+
+2. Open the project in R or RStudio.
+
+3. Run the pipeline  
+   `source("r_scripts/run_all.R")`
+
+4. Review outputs in the `outputs/` directory.
