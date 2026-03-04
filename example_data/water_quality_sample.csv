@@ -1,0 +1,6 @@
+station_id,sample_date,parameter,result_value,units
+101,2025-06-01 10:00:00,Temperature,14.2,C
+101,2025-06-01 10:00:00,pH,7.4,pH units
+102,2025-06-02 11:30:00,Temperature,15.8,C
+102,2025-06-02 11:30:00,Dissolved Oxygen,8.3,mg/L
+103,2025-06-03 09:15:00,Temperature,13.6,C
