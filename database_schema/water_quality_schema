@@ -1,0 +1,53 @@
+-- Example schema illustrating relational structures commonly used in
+-- environmental monitoring data systems including station metadata,
+-- sampling events, parameter reference tables, analytical results,
+-- and quality control tracking.
+-- Example Environmental Monitoring Database Schema
+-- Demonstrates a typical structure used for water quality monitoring systems
+
+-- Monitoring station metadata
+CREATE TABLE MonitoringStations (
+    StationID INT PRIMARY KEY,
+    StationName VARCHAR(100) NOT NULL,
+    Latitude DECIMAL(9,6),
+    Longitude DECIMAL(9,6),
+    WaterBody VARCHAR(100),
+    ActiveFlag BIT DEFAULT 1
+);
+
+-- Sampling event information
+CREATE TABLE SamplingEvents (
+    EventID INT PRIMARY KEY,
+    StationID INT NOT NULL,
+    SampleDate DATETIME NOT NULL,
+    FieldCrew VARCHAR(100),
+    Notes VARCHAR(500),
+    FOREIGN KEY (StationID) REFERENCES MonitoringStations(StationID)
+);
+
+-- Parameter reference table
+CREATE TABLE Parameters (
+    ParameterID INT PRIMARY KEY,
+    ParameterName VARCHAR(100) NOT NULL,
+    Units VARCHAR(20),
+    DetectionLimit FLOAT
+);
+
+-- Analytical results
+CREATE TABLE Results (
+    ResultID INT PRIMARY KEY,
+    EventID INT NOT NULL,
+    ParameterID INT NOT NULL,
+    ResultValue FLOAT,
+    ResultQualifier VARCHAR(10),
+    Units VARCHAR(20),
+    QCFlag VARCHAR(20),
+    FOREIGN KEY (EventID) REFERENCES SamplingEvents(EventID),
+    FOREIGN KEY (ParameterID) REFERENCES Parameters(ParameterID)
+);
+
+-- Quality control tracking table
+CREATE TABLE QCFlags (
+    QCFlag VARCHAR(20) PRIMARY KEY,
+    Description VARCHAR(200)
+);
